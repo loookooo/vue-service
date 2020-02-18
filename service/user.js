@@ -4,7 +4,7 @@ async function login(username, password) {
     let sql = `select * from users  where username = '${username}' and password='${password}'`
     return allSqlAction.allSqlAction(sql).then(res => {
         if (res.length == 1 && res[0].username === username && res[0].password === password) {
-            return { data: res, msg: "登录成功", code: 200 }
+            return { data: res[0], msg: "登录成功", code: 200 }
         } else {
             return { msg: "登录失败", code: 201 }
         }
